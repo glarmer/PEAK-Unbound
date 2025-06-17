@@ -34,6 +34,11 @@ public class Plugin : BaseUnityPlugin
     private static ConfigEntry<string> configScrollButtonLeft;
     private static ConfigEntry<string> configScrollButtonRight;
     
+    
+    private static ConfigEntry<string> configHotBarAction1;
+    private static ConfigEntry<string> configHotBarAction2;
+    private static ConfigEntry<string> configHotBarAction3;
+    
     private void Awake()
     {
         // Plugin startup logic
@@ -190,5 +195,35 @@ public class Plugin : BaseUnityPlugin
         );
         InputSystem.actions.FindAction("SpectateRight", false).ChangeBinding(0).WithPath(configSpectateRight.Value);
         CharacterInput.action_spectateRight = InputSystem.actions.FindAction("SpectateRight", false);
+        
+        configHotBarAction1 = Config.Bind
+        (
+            "General", 
+            "Hotbar1", 
+            "<Keyboard>/1", 
+            "Hotbar1 Button"
+        );
+        InputSystem.actions.FindAction("Hotbar1", false).ChangeBinding(0).WithPath(configHotBarAction1.Value);
+        CharacterInput.hotbarActions[0] = InputSystem.actions.FindAction("Hotbar1", false);
+        
+        configHotBarAction2 = Config.Bind
+        (
+            "General", 
+            "Hotbar2", 
+            "<Keyboard>/2", 
+            "Hotbar2 Button"
+        );
+        InputSystem.actions.FindAction("Hotbar2", false).ChangeBinding(0).WithPath(configHotBarAction2.Value);
+        CharacterInput.hotbarActions[1] = InputSystem.actions.FindAction("Hotbar2", false);
+        
+        configHotBarAction3 = Config.Bind
+        (
+            "General", 
+            "Hotbar3", 
+            "<Keyboard>/3", 
+            "Hotbar3 Button"
+        );
+        InputSystem.actions.FindAction("Hotbar3", false).ChangeBinding(0).WithPath(configHotBarAction3.Value);
+        CharacterInput.hotbarActions[2] = InputSystem.actions.FindAction("Hotbar3", false);
     }
 }
