@@ -12,7 +12,10 @@ public class Plugin : BaseUnityPlugin
     internal static new ManualLogSource Logger;
         
     private static ConfigEntry<string> configPause;
-    private static ConfigEntry<string> configMove;
+    private static ConfigEntry<string> configForward;
+    private static ConfigEntry<string> configBackward;
+    private static ConfigEntry<string> configLeft;
+    private static ConfigEntry<string> configRight;
     private static ConfigEntry<string> configLook;
     private static ConfigEntry<string> configJump;
     private static ConfigEntry<string> configSprint;
@@ -23,7 +26,8 @@ public class Plugin : BaseUnityPlugin
     private static ConfigEntry<string> configCrouchToggle;
     private static ConfigEntry<string> configUsePrimary;
     private static ConfigEntry<string> configUseSecondary;
-    private static ConfigEntry<string> configScroll;
+    private static ConfigEntry<string> configScrollUp;
+    private static ConfigEntry<string> configScrollDown;
     private static ConfigEntry<string> configPushToTalk;
     private static ConfigEntry<string> configEmote;
     private static ConfigEntry<string> configPing;
@@ -38,6 +42,66 @@ public class Plugin : BaseUnityPlugin
     private static ConfigEntry<string> configHotBarAction1;
     private static ConfigEntry<string> configHotBarAction2;
     private static ConfigEntry<string> configHotBarAction3;
+    
+    private void RebindMoveKeys()
+    {
+        var moveAction = InputSystem.actions.FindAction("Move", false);
+        if (moveAction == null)
+        {
+            Logger.LogInfo("Move action not found.");
+            return;
+        }
+
+        for (int i = 0; i < moveAction.bindings.Count; i++)
+        {
+            var binding = moveAction.bindings[i];
+
+            if (!binding.isPartOfComposite) continue;
+
+            switch (binding.name)
+            {
+                case "up":
+                    moveAction.ChangeBinding(i).WithPath(configForward.Value);
+                    break;
+                case "down":
+                    moveAction.ChangeBinding(i).WithPath(configBackward.Value);
+                    break;
+                case "left":
+                    moveAction.ChangeBinding(i).WithPath(configLeft.Value);
+                    break;
+                case "right":
+                    moveAction.ChangeBinding(i).WithPath(configRight.Value);
+                    break;
+            }
+        }
+    }
+    
+    private void RebindScrollAction()
+    {
+        var scrollAction = InputSystem.actions.FindAction("Scroll", false);
+        if (scrollAction == null)
+        {
+            Logger.LogInfo("Scroll action not found.");
+            return;
+        }
+
+        for (int i = 0; i < scrollAction.bindings.Count; i++)
+        {
+            var binding = scrollAction.bindings[i];
+
+            if (!binding.isPartOfComposite) continue;
+
+            switch (binding.name)
+            {
+                case "up":
+                    scrollAction.ChangeBinding(i).WithPath(configScrollUp.Value);
+                    break;
+                case "down":
+                    scrollAction.ChangeBinding(i).WithPath(configScrollDown.Value);
+                    break;
+            }
+        }
+    }
     
     private void Awake()
     {
@@ -54,28 +118,51 @@ public class Plugin : BaseUnityPlugin
         );
         InputSystem.actions.FindAction("Pause", false).ChangeBinding(0).WithPath(configPause.Value);
         CharacterInput.action_pause = InputSystem.actions.FindAction("Pause", false);
-        
-        //configMove = Config.Bind
+
+        configForward = Config.Bind
+        (
+            "General", 
+            "Forward", 
+            "<Keyboard>/w", 
+            "Forward Movement Button"
+        );
+        configBackward = Config.Bind
+        (
+            "General", 
+            "Backward", 
+            "<Keyboard>/s", 
+            "Backward Movement Button"
+        );
+        configLeft = Config.Bind
+        (
+            "General", 
+            "Left", 
+            "<Keyboard>/a", 
+            "Left Movement Button"
+        );
+        configRight = Config.Bind
+        (
+            "General", 
+            "Right", 
+            "<Keyboard>/d", 
+            "Right Movement Button"
+        );
+        RebindMoveKeys();
+        //configRight = Config.Bind
         //(
         //    "General", 
-        //    "Move", 
-        //    "w,a,s,d", 
-        //    "Move Buttons"
+        //    "ScrollUp", 
+        //    "<Mouse>/scroll/up", 
+        //    "Scroll Up Button"
         //);
-        //string forward = configMove.Value.Split(',')[0];
-        //string backwards = configMove.Value.Split(',')[2];
-        //string left = configMove.Value.Split(',')[1];
-        //string right = configMove.Value.Split(',')[3];
-        
-        //InputSystem.actions.FindAction("Move", false).ChangeBinding(1).WithPath("<Keyboard>/"+forward);
-        //InputSystem.actions.FindAction("Move", false).ChangeBinding(3).WithPath("<Keyboard>/"+backwards);
-        //InputSystem.actions.FindAction("Move", false).ChangeBinding(5).WithPath("<Keyboard>/"+left);
-        //InputSystem.actions.FindAction("Move", false).ChangeBinding(7).WithPath("<Keyboard>/"+right);
-        //CharacterInput.action_move = InputSystem.actions.FindAction("Move", false);
-        
-        //InputSystem.actions.FindAction("Look", false).;
-        //CharacterInput.action_pause = InputSystem.actions.FindAction("Look", false);
-        
+        //configRight = Config.Bind
+        //(
+        //    "General", 
+        //    "ScrollDown", 
+        //    "<Mouse>/scroll/down", 
+        //    "Scroll Down Button"
+        //);
+        //RebindScrollAction();
         configJump = Config.Bind
         (
             "General", 
