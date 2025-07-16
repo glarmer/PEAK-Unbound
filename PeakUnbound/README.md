@@ -1,31 +1,18 @@
-# PeakUnbound
+# Peak-Unbound
+A mod for PEAK which allows you to rebind controls via a configuration file.
 
-Describe your project here!
+## Configuration
+- Configuration can be found at: (steam directory)\PEAK\BepInEx\config\PEAKUnbound.cfg
 
-## Template Instructions
+## Manual Installation
+In theory only the host should be the only one who needs to install!
 
-You can remove this section after you've set up your project.
+1.) Download Bepinex from [here](https://github.com/BepInEx/BepInEx/releases/download/v5.4.23.3/BepInEx_win_x64_5.4.23.3.zip) <br>
+2.) Extract the contents of that zip into your game directory (default: C:\Program Files (x86)\Steam\steamapps\common\PEAK) resulting in a folder that has the following files: <br>
+![image](https://github.com/user-attachments/assets/403d9a1d-16a4-409c-a046-bc56141ac0ca) <br>
+3.) Start the game and close it again, this does the first time set up for Bepinex. <br>
+4.) Navigate to ...\PEAK\BepInEx\plugins, copy and paste the PEAKUnbound.dll from Thunderstore's "Manual Download" into this folder. <br>
+5.) Run the game <br>
 
-Next steps:
-
-- Create a copy of the `Config.Build.user.props.template` file and name it `Config.Build.user.props`
-  - This will automate copying your plugin assembly to `BepInEx/plugins/`
-  - Configure the paths to point to your game path and your `BepInEx/plugins/`
-  - Game assembly references should work if the path to the game is valid
-- Search `TODO` in the whole project to see what you should configure or modify
-
-### Thunderstore Packaging
-
-This template comes with Thunderstore packaging built-in, using [TCLI](<https://github.com/thunderstore-io/thunderstore-cli>).
-
-You can build Thunderstore packages by running:
-
-```sh
-dotnet build -c Release -target:PackTS -v d
-```
-
-> [!NOTE]  
-> You can learn about different build options with `dotnet build --help`.  
-> `-c` is short for `--configuration` and `-v d` is `--verbosity detailed`.
-
-The built package will be found at `artifacts/thunderstore/`.
+## Important
+- DO NOT UNDER ANY CIRCUMSTANCE COMPLAIN ABOUT BUGS TO THE DEVELOPERS WHILE USING MODS. UNINSTALL MODS IF YOU ENCOUNTER BUGS AND THEN REPORT THEM IF THEY ARE STILL PRESENT.
