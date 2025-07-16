@@ -5,10 +5,10 @@ schemaVersion = "0.0.1"
 repository = "https://thunderstore.io"
 
 [package]
-namespace = ""
-name = "PeakUnbound"
-description = "TODO: Fill in short mod description."
-websiteUrl = "" # TODO: Add a link to your mod repository here (optional)
+namespace = "glarmer"
+name = "PEAK_Unbound"
+description = "Allows you to rebind controls via a configuration file. (Including movement keys)"
+websiteUrl = "https://github.com/glarmer/PEAK-Unbound"
 containsNsfwContent = false
 
 [package.dependencies]
