@@ -155,7 +155,7 @@ public partial class Plugin : BaseUnityPlugin
                     }
                     else
                     {
-                        if (action.bindings[0].effectivePath == "Dpad")
+                        if (action.bindings[i].effectivePath == "Dpad")
                             sectionName = "Gamepad";
 
                         identifier = action.bindings[i].effectivePath;
