@@ -4,6 +4,7 @@ Allows you to rebind your controls in PEAK!
 
 ## Configuration
 - To change your keybinds check out the config folder inside PEAK/BepInEx.
+- Valid values can be found [here](https://github.com/glarmer/PEAK-Unbound/blob/main/KeyBindValues.txt)
 
 ## Manual Installation
 This is a client only mod, you only need to install it for it to work!
