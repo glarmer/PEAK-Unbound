@@ -1,6 +1,6 @@
 # PEAK Unbound
 
-Allows you to rebind your controls in PEAK!
+Allows you to edit the controls in PEAK!
 
 ## Configuration
 - To change your keybinds check out the config folder inside PEAK/BepInEx.
