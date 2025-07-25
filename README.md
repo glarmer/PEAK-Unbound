@@ -6,7 +6,16 @@ Allows you to rebind your controls in PEAK!
 - To change your keybinds check out the config folder inside PEAK/BepInEx.
 - Valid values can be found [here](https://github.com/glarmer/PEAK-Unbound/blob/main/KeyBindValues.txt)
 
-## Manual Installation
+## Important
+- Do not complain to the game developers about bugs if you are using mods. Uninstall your mods first and if they persist then tell them!
+- Please search the PEAK Steam discussions and Discord if you face bugs as they are possibly caused by the game and not the mod. If you continue to experience issues then please reach out via the Github issues!
+- If you want to add controls or bind multiple keys to one action check out [Add Controls](https://thunderstore.io/c/peak/p/darmuh/AddControls/) by darmuh!
+
+## Installation
+
+Automatic installation through r2modman or Gale is recommended!
+
+### Manual Installation
 This is a client only mod, you only need to install it for it to work!
 
 1.) Download Bepinex from [here](https://github.com/BepInEx/BepInEx/releases/download/v5.4.23.3/BepInEx_win_x64_5.4.23.3.zip) <br>
@@ -17,11 +26,6 @@ This is a client only mod, you only need to install it for it to work!
   
 4.) Navigate to ...\PEAK\BepInEx\plugins, copy and paste the PEAKUnbound.dll from releases into this folder. <br>
 5.) Run the game <br>
-
-## Important
-- Do not complain to the game developers about bugs if you are using mods. Uninstall your mods first and if they persist then tell them!
-- Please search the PEAK Steam discussions and Discord if you face bugs as they are possibly caused by the game and not the mod. If you continue to experience issues then please reach out via the Github issues!
-- If you want to add controls or bind multiple keys to one action check out [Add Controls](https://thunderstore.io/c/peak/p/darmuh/AddControls/) by darmuh!
 
 ## Help
 - You can find your PEAK folder by **right clicking the game in your Steam library** then > **Manage** > **Browse Local Files**
