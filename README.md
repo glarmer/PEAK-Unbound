@@ -8,8 +8,7 @@ Allows you to edit the controls in PEAK!
 
 ## Important
 - If you want to add controls or bind multiple keys to one action check out [Add Controls](https://thunderstore.io/c/peak/p/darmuh/AddControls/) by darmuh!
-- Do not complain to the game developers about bugs if you are using mods. Uninstall your mods first and if they persist then tell them!
-- Please search the PEAK Steam discussions and Discord if you face bugs as they are possibly caused by the game and not the mod. If you continue to experience issues then please reach out via the Github issues!
+- Do not report bugs to the PEAK developers if you are using mods. Uninstall your mods first and if they persist then report them!
 
 ## Installation
 
