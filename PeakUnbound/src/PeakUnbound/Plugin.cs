@@ -5,6 +5,7 @@ using HarmonyLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using PEAKUnbound.Patches;
 using UnityEngine.InputSystem;
 
 namespace PEAKUnbound;
@@ -14,10 +15,26 @@ public partial class Plugin : BaseUnityPlugin
 {
     public static Plugin instance = null!;
     internal static ManualLogSource Log { get; private set; } = null!;
+    private readonly Harmony _harmony = new Harmony(Id);
 
     private static List<ConfigEntry<string>> simpleConfigList = [];
     private static Dictionary<ConfigEntry<string>, int> complexConfigList = [];
+    
+    private void Awake()
+    {
+        // Plugin startup logic
+        Log = Logger;
+        Log.LogInfo($"Plugin {Name} is loaded!");
+        _harmony.PatchAll(typeof(ControllerSensitivitySettingGetMinMaxValuePatch));
+        CreateConfigBindings();
 
+        simpleConfigList.Do(x => Rebind(x));
+        complexConfigList.Do(x => RebindComplex(x));
+
+        Config.SettingChanged += OnSettingChanged;
+        Config.ConfigReloaded += OnConfigReloaded;
+        
+    }
     public void OnSettingChanged(object sender, SettingChangedEventArgs settingChangedArg)
     {
         if (settingChangedArg.ChangedSetting == null)
@@ -50,21 +67,6 @@ public partial class Plugin : BaseUnityPlugin
     public void OnConfigReloaded(object sender, EventArgs e)
     {
         Log.LogDebug("Config has been reloaded!");
-    }
-
-    private void Awake()
-    {
-        // Plugin startup logic
-        Log = Logger;
-        Log.LogInfo($"Plugin {Name} is loaded!");
-
-        CreateConfigBindings();
-
-        simpleConfigList.Do(x => Rebind(x));
-        complexConfigList.Do(x => RebindComplex(x));
-
-        Config.SettingChanged += OnSettingChanged;
-        Config.ConfigReloaded += OnConfigReloaded;
     }
 
     public static void RebindComplex(KeyValuePair<ConfigEntry<string>, int> entryGiven)
